@@ -1,0 +1,32 @@
+<div class="back-container">
+  <button class="back-btn" (click)="goBack()">
+    &#8592; Back
+  </button>
+</div>
+
+<h2>Feedback Reports</h2>
+
+<div *ngIf="feedbackList.length === 0" class="no-feedback">
+  No feedback submitted yet.
+</div>
+
+<div *ngFor="let fb of feedbackList" class="feedback-card">
+  <div class="card-header">
+    <h3>{{ fb.subject }} <span class="company">({{ fb.company }})</span></h3>
+    <button class="delete-btn" (click)="deleteFeedback(fb.id)">Delete</button>
+  </div>
+
+  <p><strong>Category:</strong> {{ fb.category }}</p>
+  <p><strong>Details:</strong> {{ fb.details }}</p>
+  <p *ngIf="fb.suggestions"><strong>Suggestions:</strong> {{ fb.suggestions }}</p>
+
+  <!-- Interview-specific details -->
+  <div *ngIf="fb.category === 'interview'" class="interview-details">
+    <p><strong>Number of Interview Rounds:</strong> {{ fb.interviewRounds }}</p>
+    <p><strong>Interview Process Description:</strong> {{ fb.interviewDescription }}</p>
+    <p><strong>Round Reached:</strong> {{ fb.roundReached }}</p>
+    <p><strong>Interview Difficulty:</strong> {{ fb.interviewDifficulty }}</p>
+    <p><strong>Interview Date:</strong> {{ fb.interviewDate }}</p>
+    <p><strong>Interview Outcome:</strong> {{ fb.interviewOutcome }}</p>
+  </div>
+</div>

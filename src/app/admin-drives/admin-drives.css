@@ -1,0 +1,373 @@
+/* === General Page Styling === */
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* === Header === */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #56ecd3, #42f5dd);
+  color: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.header h2 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #0c0909;
+}
+
+.header button {
+  color: #fff;
+}
+
+/* Add New Drive Button */
+.add-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: #1976d2 !important;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-transform: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  background: #e3f2fd;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* === Filter Section === */
+/* Minimal, professional filter section styles */
+
+.filter-section {
+  background: #fafbfc;
+  border-radius: 10px;
+  margin: 1.2rem 0.7rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(60,60,60,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 480px;
+}
+
+.mat-form-field {
+  width: 100%;
+  font-size: 1rem;
+}
+.date-range-picker input {
+  font-weight: 400;
+  color: #505050;
+}
+
+.quick-filters {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.2rem;
+}
+.quick-filters button {
+  border-radius: 7px;
+  font-weight: 500;
+  box-shadow: none;
+  background: transparent;
+  color: #6b21a8;
+  border: 1.2px solid #e0e0e0;
+  min-width: 97px;
+  font-size: 0.93rem;
+}
+.quick-filters button[color="warn"] {
+  color: #e53935;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-end;
+}
+.filter-buttons button {
+  border-radius: 6px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  min-width: 120px;
+  box-shadow: none;
+  background: #7c3aed;
+  color: #fff;
+  transition: background 0.18s;
+}
+.filter-buttons button[color="accent"] {
+  background: #b792f6;
+  color: #6530b0;
+}
+.filter-buttons button:disabled {
+  background: #ececec;
+  color: #aaa;
+}
+
+.sidebar-filter {
+  width: 260px;
+  min-width: 210px;
+  max-width: 310px;
+  background: #fafbfc;
+  border-radius: 12px;
+  margin: 1.7rem 1.3rem 1.7rem 1.7rem;
+  padding: 1.3rem 1.2rem 1.7rem 1.2rem;
+  box-shadow: 0 2px 10px rgba(60,60,60,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-self: flex-start;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.quick-tick-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-export-btn {
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* === Drives Grid === */
+.drives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+  padding: 2rem 2.5rem;
+  background-color: #f9fafb;
+}
+
+.drive-card {
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.drive-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.company-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e88e5;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.03em;
+}
+
+mat-card-subtitle {
+  font-size: 0.75rem;
+  background: #e3f2fd;
+  color: #1e88e5;
+  padding: 0.3rem 0.7rem;
+  border-radius: 16px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  user-select: none;
+  cursor: default;
+}
+
+mat-card-subtitle:hover {
+  background: #bbdefb;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+}
+
+.header-actions button {
+  transition: transform 0.2s ease;
+  color: #4a4a4a;
+}
+
+.header-actions button:hover {
+  transform: scale(1.15);
+  color: #1976d2;
+}
+
+.job-description {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.8rem;
+  line-height: 1.35;
+  flex-grow: 1;
+}
+
+.completed-card {
+  border: 2px solid #43a047;
+  background: #e8f5e9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.completed-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(67, 160, 71, 0.3);
+}
+
+.history-section {
+  margin: 3rem 2rem;
+  padding: 1.5rem 2rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.04);
+}
+
+.history-section h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #2e7d32;
+  letter-spacing: 0.03em;
+}
+
+.export-buttons button {
+  background: #1976d2;
+  color: white !important;
+  margin-bottom: 0.7rem;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  transition: background 0.25s ease;
+}
+
+.export-buttons button:hover {
+  background: #135ba1;
+}
+
+.empty-state {
+  text-align: center;
+  color: #aaaaaa;
+  font-size: 1.2rem;
+  margin-top: 2.6rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1100px;
+  position: relative;
+  height: 300px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.5, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.drive-card,
+.drive-card-back {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  padding: 1.8rem;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.05);
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.drive-card {
+  background: linear-gradient(145deg, #ffffff, #f0f4fa);
+  cursor: default;
+  border: 1px solid black;
+    padding: 10px;
+    padding-top: 35px;
+}
+
+.drive-card-back {
+  background: linear-gradient(145deg, #42a5f5, #1976d2);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  border-radius: 20px;
+  align-items: flex-start;
+}
+
+.drive-card-back h4 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.drive-card-back p {
+  margin: 0.4rem 0;
+  font-weight: 500;
+}
+
+.drive-card-back button {
+  margin-top: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+}
+
+.drive-card:hover {
+  transform: translateY(-7px) scale(1.05);
+  box-shadow: 0 20px 45px rgba(217, 22, 22, 0.15);
+}
+
+.completed-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 34px rgba(67, 160, 71, 0.3);
+}
+
+.flip-trigger {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .drives-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    padding: 1rem 1.3rem;
+  }
+  .filter-section {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
