@@ -11,7 +11,6 @@
   top: 0;
   left: 0;
   bottom: 0;
-  overflow-y: auto;
   transition: all 0.35s ease;
   padding-top: 28px;
   padding-left: 16px;
@@ -22,13 +21,25 @@
 .sidebar-header {
   display: flex;
   align-items: center;
-  padding: 20px 30px 20px 38px;
+  padding: 0px 30px 20px 38px;
   border-bottom: 1px solid #090b13;
-  margin-bottom: 24px;
+  margin-bottom: 4px;
   user-select: none;
 }
 
 
+.nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* spacing between icon and text */
+}
+
+.nav-icon {
+  width: 32px;      /* adjust as needed */
+  height: 32px;     /* keep square for GIFs */
+  object-fit: contain;
+  border-radius: 4px; /* optional for rounded corners */
+}
 
 
 .portal-title {
@@ -64,7 +75,7 @@ ul {
 .nav-item a {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 13px;
   padding: 15px 34px 15px 46px;
   font-size: 16px;
   font-weight: 600;
@@ -143,18 +154,17 @@ ul {
 
 /* Sidebar footer */
 .sidebar-footer {
-  margin-top: auto;
-  padding: 28px 20px 20px 20px;
+  padding-block: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-top: 1px solid #e6e8f0;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 }
 
 .student-circle {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
   background: #f8f9fb;
@@ -177,7 +187,6 @@ ul {
   object-fit: cover;
 }
 .logout-btn a {
-  margin: 6px 0;
   border-radius: 40px;
   background: rgba(255, 76, 76, 0.12);
   color: #d32f2f !important;

@@ -15,6 +15,7 @@
         <option value="other">Other</option>
       </select>
     </div>
+    <p>Selected category: "{{ feedback.category }}"</p>
     <!-- Interview-specific fields -->
     <div *ngIf="feedback.category === 'interview'">
       <div class="form-row">

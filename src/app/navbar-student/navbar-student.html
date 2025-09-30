@@ -12,28 +12,55 @@
 
   <ul>
     <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-      <a routerLink="/dashboard"><i class="fas fa-chart-line"></i><span>Dashboard</span></a>
+      <a routerLink="/dashboard">
+        <img src="dashboard1.gif" alt="Dashboard" class="nav-icon" />
+        <span>Dashboard</span>
+      </a>
     </li>
+  
     <li class="nav-item" routerLinkActive="active">
-      <a routerLink="/student-drives"><i class="fas fa-briefcase"></i><span>Placements</span></a>
+      <a routerLink="/student-drives">
+        <img src="plac.gif" alt="Placements" class="nav-icon" />
+        <span>Placements</span>
+      </a>
     </li>
+  
     <li class="nav-item" routerLinkActive="active">
-      <a routerLink="/student-drives-history"><i class="fas fa-calendar"></i><span>Drive History</span></a>
+      <a routerLink="/student-drives-history">
+        <img src="hist.gif" alt="Drive History" class="nav-icon" />
+        <span>Drive History</span>
+      </a>
     </li>
-     <li class="nav-item" routerLinkActive="active">
-      <a routerLink="/student-application"><i class="fas fa-calendar"></i><span>Applications</span></a>
-    </li>
+  
     <li class="nav-item" routerLinkActive="active">
-      <a routerLink="/student-profile"><i class="fas fa-user"></i><span>Profile</span></a>
+      <a routerLink="/student-application">
+        <img src="app.gif" alt="Applications" class="nav-icon" />
+        <span>Applications</span>
+      </a>
     </li>
+  
     <li class="nav-item" routerLinkActive="active">
-      <a routerLink="/feedback"><i class="fas fa-comment-dots"></i><span>Feedback</span></a>
+      <a routerLink="/student-profile">
+        <img src="pro.gif" alt="Profile" class="nav-icon" />
+        <span>Profile</span>
+      </a>
     </li>
-    
+  
     <li class="nav-item" routerLinkActive="active">
-      <a routerLink="/settings"><i class="fas fa-cog"></i><span>Settings</span></a>
+      <a routerLink="/feedback">
+        <img src="fee.gif" alt="Feedback" class="nav-icon" />
+        <span>Feedback</span>
+      </a>
+    </li>
+  
+    <li class="nav-item" routerLinkActive="active">
+      <a routerLink="/settings">
+        <img src="set.gif" alt="Settings" class="nav-icon" />
+        <span>Settings</span>
+      </a>
     </li>
   </ul>
+  
 
   <!-- Footer with profile + logout -->
   <div class="sidebar-footer">

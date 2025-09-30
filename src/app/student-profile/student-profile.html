@@ -1,36 +1,190 @@
 <app-student-navbar [username]="username"></app-student-navbar>
-<div class="profile-container">
-  <!-- Profile Form: shown only if mode is 'fill' or 'edit' -->
-  <form *ngIf="mode === 'fill' || mode === 'edit'" class="profile-card" (ngSubmit)="updateProfile()">
-    <h3>My Profile</h3>
-    <div class="profile-field"><label>Full Name</label>
-      <input [(ngModel)]="student.fullName" name="fullName" required /></div>
-    <div class="profile-field"><label>Email</label>
-      <input [(ngModel)]="student.email" name="email" type="email" required /></div>
-    <div class="profile-field"><label>Phone</label>
-      <input [(ngModel)]="student.phone" name="phone" required /></div>
-    <div class="profile-field"><label>Batch</label>
-      <input [(ngModel)]="student.batch" name="batch" /></div>
-    <div class="profile-field"><label>College</label>
-      <input [(ngModel)]="student.college" name="college" /></div>
-    <div class="profile-field"><label>Resume</label>
-      <input type="file" (change)="onFileChange($event)" />
-      <div *ngIf="student.resumePath"><a [href]="student.resumePath" target="_blank">View Uploaded Resume</a></div>
+
+<div class="student-dashboard">
+  <!-- Left Profile Card -->
+  <div class="profile-card">
+    <div class="profile-avatar">
+      <span>{{ student.fullName ? student.fullName.charAt(0).toUpperCase() : '?' }}</span>
     </div>
-    <button type="submit" class="save-btn">Save</button>
-    <button type="button" (click)="cancelEdit()" class="edit-btn" *ngIf="mode === 'edit'">Cancel</button>
-    <div *ngIf="success" class="success-msg">{{ success }}</div>
-    <div *ngIf="error" class="error-msg">{{ error }}</div>
-  </form>
-  <!-- Details View: shown only if mode is 'view' -->
-  <div *ngIf="mode === 'view'" class="profile-card">
-    <h3>My Profile</h3>
-    <div><strong>Full Name:</strong> {{ student.fullName }}</div>
-    <div><strong>Email:</strong> {{ student.email }}</div>
-    <div><strong>Phone:</strong> {{ student.phone }}</div>
-    <div><strong>Batch:</strong> {{ student.batch }}</div>
-    <div><strong>College:</strong> {{ student.college }}</div>
-    <div *ngIf="student.resumePath"><a [href]="student.resumePath" target="_blank">View Resume</a></div>
-    <button (click)="editProfile()" class="edit-btn">Edit</button>
+    <div class="profile-info">
+      <h2>{{ student.fullName }}</h2>
+      <p>{{ student.email }}</p>
+      <p>{{ student.batch }} | {{ student.college }}</p>
+      <p>{{ student.phone }}</p>
+      <p *ngIf="student.resumePath">
+        <a [href]="student.resumePath" target="_blank">View Resume</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Right Side: Tabs + Content -->
+  <div class="content-area">
+    <div class="tabs">
+      <button [class.active]="activeTab==='profile'" (click)="selectTab('profile')">Profile</button>
+      <button [class.active]="activeTab==='skills'" (click)="selectTab('skills')">Skills</button>
+      <button [class.active]="activeTab==='projects'" (click)="selectTab('projects')">Projects</button>
+      <button [class.active]="activeTab==='internships'" (click)="selectTab('internships')">Internships</button>
+      <button [class.active]="activeTab==='achievements'" (click)="selectTab('achievements')">Achievements</button>
+    </div>
+
+    <div class="tab-content">
+      <ng-container [ngSwitch]="activeTab">
+
+        <!-- Profile -->
+        <div *ngSwitchCase="'profile'">
+          <div class="profile-form-wrap" *ngIf="mode === 'fill' || mode === 'edit'">
+            <h3 class="profile-form-title">My Profile</h3>
+            <form (ngSubmit)="updateProfile()" class="profile-form-grid">
+              <div>
+                <label>Full Name</label>
+                <input [(ngModel)]="student.fullName" name="fullName" required />
+              </div>
+              <div>
+                <label>Email</label>
+                <input [(ngModel)]="student.email" name="email" type="email" required />
+              </div>
+              <div>
+                <label>Phone</label>
+                <input [(ngModel)]="student.phone" name="phone" required />
+              </div>
+              <div>
+                <label>Batch</label>
+                <input [(ngModel)]="student.batch" name="batch" />
+              </div>
+              <div>
+                <label>College</label>
+                <input [(ngModel)]="student.college" name="college" />
+              </div>
+              <div>
+                <label>Resume</label>
+                <input type="file" (change)="onFileChange($event)" />
+                <span *ngIf="student.resumePath" class="resume-link">
+                  <a [href]="student.resumePath" target="_blank">View Resume</a>
+                </span>
+              </div>
+              <div class="profile-actions-row">
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" (click)="cancelEdit()" *ngIf="mode === 'edit'" class="cancel-btn">Cancel</button>
+              </div>
+              <div *ngIf="success" class="success-msg">{{ success }}</div>
+              <div *ngIf="error" class="error-msg">{{ error }}</div>
+            </form>
+          </div>
+
+          <div *ngIf="mode === 'view'" class="profile-view">
+            <div class="profile-block">
+              <div class="profile-label">Full Name</div>
+              <div>{{ student.fullName }}</div>
+            </div>
+            <div class="profile-block">
+              <div class="profile-label">Email</div>
+              <div>{{ student.email }}</div>
+            </div>
+            <div class="profile-block">
+              <div class="profile-label">Phone</div>
+              <div>{{ student.phone }}</div>
+            </div>
+            <div class="profile-block">
+              <div class="profile-label">Batch</div>
+              <div>{{ student.batch }}</div>
+            </div>
+            <div class="profile-block">
+              <div class="profile-label">College</div>
+              <div>{{ student.college }}</div>
+            </div>
+            <div class="profile-block" *ngIf="student.resumePath">
+              <div class="profile-label">Resume</div>
+              <div>
+                <a [href]="student.resumePath" target="_blank">View Resume</a>
+              </div>
+            </div>
+            <div class="profile-view-actions">
+              <button (click)="editProfile()" class="edit-btn">Edit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div *ngSwitchCase="'skills'">
+          <div class="tab-card">
+            <h3>Skills</h3>
+            <div class="input-row">
+              <input [(ngModel)]="newSkill" placeholder="New skill" />
+              <button class="add-btn" (click)="addSkill()">Add</button>
+            </div>
+            <ul class="item-list">
+              <li *ngFor="let skill of skills">
+                <span>{{ skill.name }}</span>
+                <button (click)="deleteSkill(skill.id)" class="delete-btn">Delete</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div *ngSwitchCase="'projects'">
+          <div class="tab-card">
+            <h3>Projects</h3>
+            <div class="input-row">
+              <input [(ngModel)]="newProject.title" placeholder="Title" />
+              <input [(ngModel)]="newProject.description" placeholder="Description" />
+              <input [(ngModel)]="newProject.link" placeholder="Link" />
+              <button class="add-btn" (click)="addProject()">Add Project</button>
+            </div>
+            <ul class="item-list projects-list">
+              <li *ngFor="let p of projects">
+                <span class="pr-title">{{ p.title }}</span>
+                <span class="pr-desc">{{ p.description }}</span>
+                <a [href]="p.link" target="_blank" class="pr-link">{{ p.link }}</a>
+                <button (click)="deleteProject(p.id)" class="delete-btn">Delete</button>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+
+        <!-- Internships -->
+        <div *ngSwitchCase="'internships'">
+          <div class="tab-card">
+            <h3>Internships</h3>
+            <div class="input-row">
+              <input [(ngModel)]="newInternship.company" placeholder="Company" />
+              <input [(ngModel)]="newInternship.role" placeholder="Role" />
+              <input [(ngModel)]="newInternship.duration" placeholder="Duration" />
+              <button class="add-btn" (click)="addInternship()">Add Internship</button>
+            </div>
+            <ul class="item-list internships-list">
+              <li *ngFor="let i of internships">
+                <span class="in-company">{{ i.company }}</span>
+                <span class="in-role">{{ i.role }}</span>
+                <span class="in-duration">{{ i.duration }}</span>
+                <button (click)="deleteInternship(i.id)" class="delete-btn">Delete</button>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+
+        <!-- Achievements -->
+        <div *ngSwitchCase="'achievements'">
+          <div class="tab-card">
+            <h3>Achievements</h3>
+            <div class="input-row">
+              <input [(ngModel)]="newAchievement.title" placeholder="Title" />
+              <input [(ngModel)]="newAchievement.description" placeholder="Description" />
+              <button class="add-btn" (click)="addAchievement()">Add Achievement</button>
+            </div>
+            <ul class="item-list">
+              <li *ngFor="let a of achievements">
+                <span class="ach-title">{{ a.title }}</span>
+                <span class="ach-desc">{{ a.description }}</span>
+                <button (click)="deleteAchievement(a.id)" class="delete-btn">Delete</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
   </div>
 </div>

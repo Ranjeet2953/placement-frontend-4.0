@@ -142,6 +142,57 @@ updateMyApplicationStatus(applicationId: number, body: { status: string }) {
     { withCredentials: true }
   );
 }
+// ---------------- SKILLS ----------------
+getSkills() {
+  return this.http.get<any[]>(`${this.baseUrl}/student/skills`, { withCredentials: true });
+}
+
+addSkill(skill: any) {
+  return this.http.post<any>(`${this.baseUrl}/student/skills`, skill, { withCredentials: true });
+}
+
+deleteSkill(id: number) {
+  return this.http.delete(`${this.baseUrl}/student/skills/${id}`, { withCredentials: true });
+}
+
+// ---------------- PROJECTS ----------------
+getProjects() {
+  return this.http.get<any[]>(`${this.baseUrl}/student/projects`, { withCredentials: true });
+}
+
+addProject(project: any) {
+  return this.http.post<any>(`${this.baseUrl}/student/projects`, project, { withCredentials: true });
+}
+
+deleteProject(id: number) {
+  return this.http.delete(`${this.baseUrl}/student/projects/${id}`, { withCredentials: true });
+}
+
+// ---------------- INTERNSHIPS ----------------
+getInternships() {
+  return this.http.get<any[]>(`${this.baseUrl}/student/internships`, { withCredentials: true });
+}
+
+addInternship(internship: any) {
+  return this.http.post<any>(`${this.baseUrl}/student/internships`, internship, { withCredentials: true });
+}
+
+deleteInternship(id: number) {
+  return this.http.delete(`${this.baseUrl}/student/internships/${id}`, { withCredentials: true });
+}
+
+// ---------------- ACHIEVEMENTS ----------------
+getAchievements() {
+  return this.http.get<any[]>(`${this.baseUrl}/student/achievements`, { withCredentials: true });
+}
+
+addAchievement(achievement: any) {
+  return this.http.post<any>(`${this.baseUrl}/student/achievements`, achievement, { withCredentials: true });
+}
+
+deleteAchievement(id: number) {
+  return this.http.delete(`${this.baseUrl}/student/achievements/${id}`, { withCredentials: true });
+}
 
 
 

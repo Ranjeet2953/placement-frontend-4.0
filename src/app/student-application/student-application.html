@@ -1,58 +1,61 @@
 <!-- training-placement.component.html -->
 <div class="tp-page">
   <!-- Header -->
-  <div class="tp-page-header">
-    <div class="tp-title-wrap">
-      <div class="tp-logo">📄</div>
-      <div>
-        <h1 class="tp-title">Training & Placement</h1>
-        <p class="tp-subtitle">Track and manage job applications</p>
-      </div>
-    </div>
-  </div>
+ 
 
   <!-- KPI Cards -->
   <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-icon">📊</div>
+    <div class="kpi-card total">
+      <div class="kpi-icon">
+        <img src="application.gif" alt="Total" />
+      </div>
       <div class="kpi-meta">
         <span class="kpi-label">Total</span>
         <span class="kpi-value">{{ applications.length }}</span>
       </div>
     </div>
-
-    <div class="kpi-card">
-      <div class="kpi-icon">🕒</div>
+  
+    <div class="kpi-card pending">
+      <div class="kpi-icon">
+        <img src="pending.gif" alt="Pending" />
+      </div>
       <div class="kpi-meta">
         <span class="kpi-label">Pending</span>
         <span class="kpi-value">{{ applications | pendingCount }}</span>
       </div>
     </div>
-
-    <div class="kpi-card">
-      <div class="kpi-icon">👤</div>
+  
+    <div class="kpi-card shortlisted">
+      <div class="kpi-icon">
+        <img src="short.gif" alt="Shortlisted" />
+      </div>
       <div class="kpi-meta">
         <span class="kpi-label">Shortlisted</span>
         <span class="kpi-value">{{ applications | statusCount:'SHORTLISTED' }}</span>
       </div>
     </div>
-
-    <div class="kpi-card">
-      <div class="kpi-icon">📅</div>
+  
+    <div class="kpi-card interview">
+      <div class="kpi-icon">
+        <img src="inter.gif" alt="Interview" />
+      </div>
       <div class="kpi-meta">
         <span class="kpi-label">Interview</span>
         <span class="kpi-value">{{ applications | statusCount:'INTERVIEW' }}</span>
       </div>
     </div>
-
-    <div class="kpi-card">
-      <div class="kpi-icon">📈</div>
+  
+    <div class="kpi-card selected">
+      <div class="kpi-icon">
+        <img src="select.gif" alt="Selected" />
+      </div>
       <div class="kpi-meta">
         <span class="kpi-label">Selected</span>
         <span class="kpi-value">{{ applications | statusCount:'SELECTED' }}</span>
       </div>
     </div>
   </div>
+  
 
   <!-- Applications Table -->
   <div class="card">

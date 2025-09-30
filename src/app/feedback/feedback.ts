@@ -50,7 +50,7 @@ export class Feedback {
           alert('Thank you for your feedback!');
           this.feedback = {
             company: '',
-            category: '',
+            category: 'interview',
             subject: '',
             details: '',
             suggestions: '',
